@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="6.003">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-07-15T09:38:02" time="2.968" tests="1">
+    <testcase classname=" MemoryRouter renders Dummy route" name=" MemoryRouter renders Dummy route" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="Contact Component" errors="0" failures="0" skipped="0" timestamp="2025-07-15T09:38:02" time="3.039" tests="1">
+    <testcase classname="Contact Component renders heading and contact information" name="Contact Component renders heading and contact information" time="0.077">
+    </testcase>
+  </testsuite>
+  <testsuite name="About Component" errors="0" failures="0" skipped="0" timestamp="2025-07-15T09:38:02" time="3.04" tests="1">
+    <testcase classname="About Component renders heading and description paragraphs" name="About Component renders heading and description paragraphs" time="0.078">
+    </testcase>
+  </testsuite>
+</testsuites>

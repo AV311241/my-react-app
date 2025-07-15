@@ -17,10 +17,10 @@ pipeline{
                     
                 '''
             }
-            post{
-                success {
-                    archiveArtifacts artifacts: 'dist/**/*',
-                }
+        }
+        post{
+            success {
+                archiveArtifacts artifacts: 'dist/**/*',
             }
         }
     
