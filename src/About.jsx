@@ -10,6 +10,7 @@ export default function About() {
       <p>
         Built with <strong>React 19</strong> and <strong>Vite</strong> for fast development and modern web standards.
       </p>
+      <p>Vite</p>
     </div>
   );
 }

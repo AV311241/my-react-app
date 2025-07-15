@@ -8,14 +8,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
 export default defineConfig({
-  testDir: './tests',
-  /* Run tests in files in parallel */
+  testDir: './tests/e2e',
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  testIgnore: ['**/*.test.{js,ts,jsx,tsx}'],
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
@@ -30,6 +26,12 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+  },
+  webServer: {
+    command: 'npm run dev', // or your actual dev command
+    port: 3000,
+    reuseExistingServer: !process.env.CI, // reuse if not in CI
+    timeout: 120 * 1000,
   },
   
   /* Configure projects for major browsers */
