@@ -38,7 +38,7 @@ pipeline{
                     echo 'unit testing'
                     npm run test
                 '''
-                junit "/reports/junit/junit.xml"
+                junit "reports/junit/junit.xml"
                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'reports/jest', reportFiles: 'report.html', reportName: 'Jest Unit Test Report', reportTitles: '', useWrapperFileDirectly: true])
             }
            
@@ -60,9 +60,14 @@ pipeline{
                 sh '''
                     #npm install netlify-cli
                     npm install netlify-cli --save-dev
-                    netlify deploy --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID --dir=dist
-
+                    echo node_modules/.bin/netlify deploy --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID --dir=dist --json > deploy.json
                 '''
+                script{
+                    def deployJson = readJSON file: 'deploy.json'
+                    def deployStatus = deployJson.deploy.status
+                    sh(script: 'echo ${JENKINS_URL}',returnSdout: true)
+                    env.JENKINS_STAGING_URL = deployJSON.deploy_url
+                }
 
 
             }
@@ -75,6 +80,9 @@ pipeline{
                     args '--network=host --user=root'
                     reuseNode true
                 }
+            }
+            environment {
+                VITE_BASE_URL = "${JENKINS_STAGING_URL}}"
             }
             steps{
                 echo 'E2E Testing'
