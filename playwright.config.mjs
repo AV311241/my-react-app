@@ -27,12 +27,12 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-  webServer: {
-    command: 'npm run dev', // or your actual dev command
-    port: 3000,
-    reuseExistingServer: !process.env.CI, // reuse if not in CI
-    timeout: 120 * 1000,
-  },
+  // webServer: {
+  //   command: 'npm run dev', // or your actual dev command
+  //   port: 3000,
+  //   reuseExistingServer: !process.env.CI, // reuse if not in CI
+  //   timeout: 120 * 1000,
+  // },
   
   /* Configure projects for major browsers */
   projects: [
