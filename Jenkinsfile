@@ -17,6 +17,11 @@ pipeline{
                     
                 '''
             }
+            post{
+                success {
+                    archiveArtifacts artifacts: 'dist/**/*',
+                }
+            }
         }
     
         stage("Test"){
