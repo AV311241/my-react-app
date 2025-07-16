@@ -70,7 +70,7 @@ pipeline{
                             --auth=$NETLIFY_AUTH_TOKEN \
                             --site=$NETLIFY_SITE_ID \
                             --dir=dist \
-                            --json
+                            --json \
                             --no-build
                         """,
                         returnStdout: true
@@ -108,7 +108,7 @@ pipeline{
             }
             post{
                 always {
-                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'test-results/playwright-report', reportFiles: 'index.html', reportName: 'Playwright E2E test Report', reportTitles: '', useWrapperFileDirectly: true])
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report/**', reportFiles: 'index.html', reportName: 'Playwright E2E test Report', reportTitles: '', useWrapperFileDirectly: true])
                 }
             }
         }
