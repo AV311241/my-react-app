@@ -80,4 +80,5 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+console.log(process.env.VITE_BASE_URL);
 
